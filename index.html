@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>数独终结者</title>
+    <meta name="description" content="数独终结者, Sudoku Cracker, 破解数独">
+    <meta name="keywords" content="数独终结者, Sudoku Cracker, 破解数独">
+    <meta charset="utf-8">
+    <link href="//cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/cracker.js" charset="utf-8"></script>
+    <script src="js/core.js"></script>
+    <script src="js/timer.js"></script>
+</head>
+<style type="text/css">
+
+</style>
+<body>
+
+<div class="container-fluid" style="margin-bottom:60px;">
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                         <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="#" class="brand">数独终结者</a>
+                        
+                        
+                    </div>
+                </div>
+                
+            </div> -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3 class="text-center slogan">
+                        Enter Sudoku, Crack it!
+                    </h3>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12 " id="draft-container">
+                <form autocomplete="off">
+                <table id='table'>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num1" data-no="0000"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num2" data-no="0001"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num3" data-no="0002"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num4" data-no="0010"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num5" data-no="0011"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num6" data-no="0012"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num7" data-no="0020"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num8" data-no="0021"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num9" data-no="0022"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num10" data-no="0100"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num11" data-no="0101"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num12" data-no="0102"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num13" data-no="0110"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num14" data-no="0111"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num15" data-no="0112"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num16" data-no="0120"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num17" data-no="0121"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num18" data-no="0122"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num19" data-no="0200"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num20" data-no="0201"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num21" data-no="0202"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num22" data-no="0210"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num23" data-no="0211"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num24" data-no="0212"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num25" data-no="0220"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num26" data-no="0221"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num27" data-no="0222"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num28" data-no="1000"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num29" data-no="1001"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num30" data-no="1002"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num31" data-no="1010"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num32" data-no="1011"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num33" data-no="1012"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num34" data-no="1020"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num35" data-no="1021"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num36" data-no="1022"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num37" data-no="1100"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num38" data-no="1101"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num39" data-no="1102"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num40" data-no="1110"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num41" data-no="1111"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num42" data-no="1112"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num43" data-no="1120"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num44" data-no="1121"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num45" data-no="1122"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num46" data-no="1200"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num47" data-no="1201"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num48" data-no="1202"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num49" data-no="1210"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num50" data-no="1211"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num51" data-no="1212"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num52" data-no="1220"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num53" data-no="1221"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num54" data-no="1222"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num55" data-no="2000"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num56" data-no="2001"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num57" data-no="2002"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num58" data-no="2010"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num59" data-no="2011"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num60" data-no="2012"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num61" data-no="2020"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num62" data-no="2021"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num63" data-no="2022"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num64" data-no="2100"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num65" data-no="2101"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num66" data-no="2102"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num67" data-no="2110"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num68" data-no="2111"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num69" data-no="2112"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num70" data-no="2120"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num71" data-no="2121"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num72" data-no="2122"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <table>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num73" data-no="2200"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num74" data-no="2201"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num75" data-no="2202"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num76" data-no="2210"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num77" data-no="2211"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num78" data-no="2212"><span class="show_num"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class='wrap'><input type='text' class='text' name="num79" data-no="2220"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num80" data-no="2221"><span class="show_num"></span></div></td>
+                                    <td><div class='wrap'><input type='text' class='text' name="num81" data-no="2222"><span class="show_num"></span></div></td>
+                                </tr>
+                            </table>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                </form>
+
+                                
+                    <div class="row-fluid panel">
+                        <div class="span12 btn-box">
+                             <button class="btn btn-info" type="button" id="crack-btn">破解</button>
+                             <button class="btn btn-info" type="button" id="scan-btn">扫描</button>
+                             <!-- <button class="btn btn-info" type="button" id="restore-btn">撤消</button> -->
+                             <button class="btn btn-info" type="button" id="restore-btn">还原</button>
+                        </div>
+                        <div clsss="span12">
+                            <div class="clock">
+                                <div class="titer">00:00.00</div>
+                                <div class="note">请输入数字</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div clsss="span12">
+    <div class="clock" style="font-size: 15px;color: #2d2d2d;">
+    <p class="text-center" style="margin-bottom: 0;">
+        <iframe src="https://ghbtns.com/github-btn.html?user=cloudsthere&repo=sudoku-cracker&type=star&count=true" frameborder="0" scrolling="0" width="90px" height="30px" style="vertical-align: middle;padding-top:5px;"></iframe>
+        <em>contact me : cloudsthere@163.com</em>
+    </p>
+    
+    </div>
+
+</div>
+</body>
+</html>
+
