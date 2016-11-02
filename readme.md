@@ -1,5 +1,5 @@
 ### Sudoku Cracker
-数独破解程序，详见[数独终结者](http://cloudsthere.com)
+数独破解程序，详见[数独终结者](https://cloudsthere.github.io/sudoku-cracker/)
 
 #### 用法
 
